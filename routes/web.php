@@ -21,4 +21,7 @@ Auth::routes();
 
 Route::middleware(['auth'])->group(function () {
     Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+    Route::get('/trending-cryptocurrencies', [App\Http\Controllers\HomeController::class, 'trending_cryptocurrencies'])->name('trending-cryptocurrencies');
+    Route::get('/most-viewed-pages', [App\Http\Controllers\HomeController::class, 'most_viewed_pages'])->name('most-viewed-pages');
 });
