@@ -35,29 +35,39 @@
                                     <a class="{{ request()->routeIs('trending-cryptocurrencies') ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white' }} rounded-md px-3 py-3 text-sm font-medium text-decoration-none" href="{{ route('trending-cryptocurrencies') }}">Trending</a>
 
                                     <a class="{{ request()->routeIs('most-viewed-pages') ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white' }} rounded-md px-3 py-3 text-sm font-medium text-decoration-none" href="{{ route('most-viewed-pages') }}">Most Visited</a>
-
-                                    <a class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-3 text-sm font-medium text-decoration-none" href="{{ route('logout') }}"
-                                        onclick="event.preventDefault();
-                                                        document.getElementById('logout-form').submit();">
-                                        {{ __('Logout') }}
-                                    </a>
-
-                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                                        @csrf
-                                    </form>
                                 @endauth
                             </div>
+                        </div>
+
+                        <div class="absolute right-0 z-10 mt-3 w-48 origin-top-right">
+                            <a class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-3 text-sm font-medium text-decoration-none" href="{{ route('logout') }}"
+                            onclick="event.preventDefault();
+                                            document.getElementById('logout-form').submit();">
+                            {{ __('Logout') }}
+                            </a>
+
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                @csrf
+                            </form>
                         </div>
                     </div>
 
                 </div>
             </div>
+        </nav>
 
-          </nav>
+        <header class="bg-white shadow">
+            <div class="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
+                <h1 class="text-3xl font-bold tracking-tight text-gray-900">@yield('title')</h1>
+            </div>
+        </header>
 
-        <main class="py-4">
-            @yield('content')
+        <main>
+            <div>
+                @yield('content')
+            </div>
         </main>
+
     </div>
 </body>
 </html>

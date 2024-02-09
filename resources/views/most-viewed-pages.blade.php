@@ -1,5 +1,7 @@
 @extends('layouts.app')
 
+@section('title', 'Most Visited')
+
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
@@ -37,9 +39,6 @@
                                     <th
                                         class="px-6 py-3 text-xs font-medium leading-4 tracking-wider text-left text-gray-500 uppercase border-b border-gray-200 bg-gray-50">
                                         Volume</th>
-                                    <th
-                                        class="px-6 py-3 text-xs font-medium leading-4 tracking-wider text-left text-gray-500 uppercase border-b border-gray-200 bg-gray-50">
-                                        Ranking</th>
                                 </tr>
                             </thead>
 
@@ -99,10 +98,6 @@
 
                                     <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
                                         <div class="text-sm leading-5 text-gray-500"><b>${{ number_format($item->quote->USD->volume_24h,2) }}</b></div>
-                                    </td>
-
-                                    <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
-                                        <div class="text-sm leading-5 text-gray-500"><b>{{ $item->cmc_rank }}</b></div>
                                     </td>
                                 </tr>
                                 @endforeach

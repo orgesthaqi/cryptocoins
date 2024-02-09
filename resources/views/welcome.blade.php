@@ -33,7 +33,7 @@
 						<div class="hero-copy">
 	                        <h1 class="hero-title mt-0">CryptoCoins</h1>
                             <p>CryptoCoins is your go-to online destination for all things cryptocurrency. From the latest news and market trends to insightful guides and analysis, we're here to help you navigate the exciting world of digital currencies.</p>
-	                        <div class="hero-cta"><a class="button button-primary" href="/login">Login</a><a class="button" href="/register">Register</a></div>
+	                        <div class="hero-cta"><a class="button button-primary" href="/login">Login</a></div>
 						</div>
 						<div class="hero-figure anime-element">
 							<svg class="placeholder" width="528" height="396" viewBox="0 0 528 396">
