@@ -107,14 +107,14 @@
                 </div>
                 <div class="flex items-center space-x-1" style="margin: 20px auto;">
                     @php
-                        $start = ceil($data->status->total_count / 200);
+                        $start = ceil($data->status->total_count / 100);
                     @endphp
 
                     @for($i = 1; $i <= $start; $i++)
                         @php
-                            $pageStart = (200 * ($i - 1)) + 1;
+                            $pageStart = (100 * ($i - 1)) + 1;
                         @endphp
-                        <a href="?start={{ $pageStart == 0 ? 1 : $pageStart }}&limit=200&page={{ $i }}" class="px-4 py-2 text-gray-700 bg-gray-200 rounded-md hover:bg-blue-400 hover:text-white {{ (request('page') == $i || !request('page') && $i == 1) ? 'bg-blue-400 text-white' : '' }}">
+                        <a href="?start={{ $pageStart == 0 ? 1 : $pageStart }}&limit=100&page={{ $i }}" class="px-4 py-2 text-gray-700 bg-gray-200 rounded-md hover:bg-blue-400 hover:text-white {{ (request('page') == $i || !request('page') && $i == 1) ? 'bg-blue-400 text-white' : '' }}">
                             {{ $i }}
                         </a>
                     @endfor

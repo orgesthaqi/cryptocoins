@@ -16,7 +16,7 @@ class HomeController extends Controller
         $client = new Client();
 
         $start = ($request->has('start')) ? $request->start : 1;
-        $limit = ($request->has('limit')) ? $request->limit : 200;
+        $limit = ($request->has('limit')) ? $request->limit : 100;
 
         $url = "https://pro-api.coinmarketcap.com/v1/cryptocurrency/trending/latest?start={$start}&limit={$limit}";
 
@@ -36,8 +36,7 @@ class HomeController extends Controller
         $client = new Client();
 
         $start = ($request->has('start')) ? $request->start : 1;
-        $limit = ($request->has('limit')) ? $request->limit : 200;
-        $page = ($request->has('page')) ? $request->page : 1;
+        $limit = ($request->has('limit')) ? $request->limit : 100;
 
         $url = "https://pro-api.coinmarketcap.com/v1/cryptocurrency/trending/most-visited?start={$start}&limit={$limit}";
 
