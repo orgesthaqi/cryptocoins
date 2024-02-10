@@ -35,6 +35,8 @@
                                     <a class="{{ request()->routeIs('trending-cryptocurrencies') ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white' }} rounded-md px-3 py-3 text-sm font-medium text-decoration-none" href="{{ route('trending-cryptocurrencies') }}">Trending</a>
 
                                     <a class="{{ request()->routeIs('most-viewed-pages') ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white' }} rounded-md px-3 py-3 text-sm font-medium text-decoration-none" href="{{ route('most-viewed-pages') }}">Most Visited</a>
+
+                                    <a class="{{ request()->routeIs('recently-added') ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white' }} rounded-md px-3 py-3 text-sm font-medium text-decoration-none" href="{{ route('recently-added') }}">Recently Added</a>
                                 @endauth
                             </div>
                         </div>

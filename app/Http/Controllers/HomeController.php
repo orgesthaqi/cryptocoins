@@ -50,5 +50,25 @@ class HomeController extends Controller
 
         return view('most-viewed-pages', ['data' => $responseBody]);
     }
+
+    public function recently_added(Request $request)
+    {
+        $client = new Client();
+
+        $start = ($request->has('start')) ? $request->start : 1;
+        $limit = ($request->has('limit')) ? $request->limit : 100;
+
+        $url = "https://pro-api.coinmarketcap.com/v1/cryptocurrency/listings/new?start={$start}&limit={$limit}";
+
+        $headers = [
+            'Accepts' => 'application/json',
+            'X-CMC_PRO_API_KEY' => env('COINMARKETCAP_API_KEY')
+        ];
+
+        $response = $client->request('GET', $url, ['headers' => $headers]);
+        $responseBody = json_decode($response->getBody()->getContents());
+
+        return view('recently-added', ['data' => $responseBody]);
+    }
 }
 
