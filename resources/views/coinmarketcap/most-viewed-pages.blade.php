@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Trending')
+@section('title', 'CoinMarketCap - Most Visited')
 
 @section('content')
 <div class="container">

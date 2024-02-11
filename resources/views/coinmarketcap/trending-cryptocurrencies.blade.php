@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Recently Added')
+@section('title', 'CoinMarketCap - Trending')
 
 @section('content')
 <div class="container">
@@ -26,22 +26,19 @@
                                         Price</th>
                                     <th
                                         class="px-6 py-3 text-xs font-medium leading-4 tracking-wider text-left text-gray-500 uppercase border-b border-gray-200 bg-gray-50">
-                                        1h</th>
-                                    <th
-                                        class="px-6 py-3 text-xs font-medium leading-4 tracking-wider text-left text-gray-500 uppercase border-b border-gray-200 bg-gray-50">
                                         24h</th>
                                     <th
                                         class="px-6 py-3 text-xs font-medium leading-4 tracking-wider text-left text-gray-500 uppercase border-b border-gray-200 bg-gray-50">
-                                        Fully Diluted Market Cap</th>
+                                        7d</th>
+                                    <th
+                                        class="px-6 py-3 text-xs font-medium leading-4 tracking-wider text-left text-gray-500 uppercase border-b border-gray-200 bg-gray-50">
+                                        30d</th>
+                                    <th
+                                        class="px-6 py-3 text-xs font-medium leading-4 tracking-wider text-left text-gray-500 uppercase border-b border-gray-200 bg-gray-50">
+                                        Market Cap</th>
                                     <th
                                         class="px-6 py-3 text-xs font-medium leading-4 tracking-wider text-left text-gray-500 uppercase border-b border-gray-200 bg-gray-50">
                                         Volume</th>
-                                    <th
-                                        class="px-6 py-3 text-xs font-medium leading-4 tracking-wider text-left text-gray-500 uppercase border-b border-gray-200 bg-gray-50">
-                                        Blockchain</th>
-                                    <th
-                                        class="px-6 py-3 text-xs font-medium leading-4 tracking-wider text-left text-gray-500 uppercase border-b border-gray-200 bg-gray-50">
-                                        Added</th>
                                 </tr>
                             </thead>
 
@@ -63,7 +60,8 @@
                                     <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
                                         <div class="flex items-center">
                                             <div class="flex-shrink-0 w-10 h-10">
-                                                <img class="w-10 h-10 rounded-full" src="https://s2.coinmarketcap.com/static/img/coins/64x64/{{ $item->id }}.png" alt="admin dashboard ui">
+                                                <img class="w-10 h-10 rounded-full" src="https://s2.coinmarketcap.com/static/img/coins/64x64/{{ $item->id }}.png"
+                                                    alt="admin dashboard ui">
                                             </div>
 
                                             <div class="ml-4">
@@ -83,29 +81,23 @@
                                     </td>
 
                                     <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
-                                        <div class="text-sm leading-5 text-gray-500"><b>{{ number_format($item->quote->USD->percent_change_1h,2) }}%</b></div>
-                                    </td>
-
-                                    <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
                                         <div class="text-sm leading-5 text-gray-500"><b>{{ number_format($item->quote->USD->percent_change_24h,2) }}%</b></div>
                                     </td>
 
                                     <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
-                                        <div class="text-sm leading-5 text-gray-500"><b>${{ number_format($item->quote->USD->fully_diluted_market_cap,3) }}</b></div>
+                                        <div class="text-sm leading-5 text-gray-500"><b>{{ number_format($item->quote->USD->percent_change_7d,2) }}%</b></div>
                                     </td>
 
                                     <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
-                                        <div class="text-sm leading-5 text-gray-500"><b>${{ number_format($item->quote->USD->volume_24h,3) }}</b></div>
+                                        <div class="text-sm leading-5 text-gray-500"><b>{{ number_format($item->quote->USD->percent_change_30d,2) }}%</b></div>
                                     </td>
 
                                     <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
-                                        <div class="text-sm leading-5 text-gray-500">
-                                            <img class="w-10 h-10 rounded-full" src="https://s2.coinmarketcap.com/static/img/coins/32x32/{{ $item->platform?->id }}.png" style="width: 25px; height:25px;">
-                                        </div>
+                                        <div class="text-sm leading-5 text-gray-500"><b>${{ number_format($item->quote->USD->market_cap,2) }}</b></div>
                                     </td>
 
                                     <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
-                                        <div class="text-sm leading-5 text-gray-500"><b>{{ \Carbon\Carbon::parse($item->date_added)->diffForHumans() }}</b></div>
+                                        <div class="text-sm leading-5 text-gray-500"><b>${{ number_format($item->quote->USD->volume_24h,2) }}</b></div>
                                     </td>
                                 </tr>
                                 @endforeach
@@ -115,7 +107,7 @@
                 </div>
                 <div class="flex items-center space-x-1" style="margin: 20px auto;">
                     @php
-                        $start = ceil(1000 / 100);
+                        $start = ceil($data->status->total_count / 100);
                     @endphp
 
                     @for($i = 1; $i <= $start; $i++)
