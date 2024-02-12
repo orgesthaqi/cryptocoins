@@ -12,6 +12,9 @@
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
 
@@ -24,9 +27,9 @@
             <div class="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
                 <div class="relative flex h-16 items-center justify-between">
                     <div class="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
-                        <div class="flex flex-shrink-0 items-center">
-                            <img class="h-8 w-auto" src="http://cryptocoins.test/images/logo.svg" alt="Your Company">
-                        </div>
+                        <a href="/home" class="flex flex-shrink-0 items-center">
+                            <img class="h-8 w-auto" src="{{ asset('images/logo.svg') }}" alt="Your Company">
+                        </a>
                         <div class="hidden sm:ml-6 sm:block">
                             <div class="flex space-x-4">
                                 @auth
@@ -46,7 +49,7 @@
                                                     <a href="{{ route('most-viewed-pages') }}" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white rounded-lg">Most Visited</a>
                                                 </li>
                                                 <li>
-                                                    <a href="{{ route('trending-crypto') }}" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white rounded-lg">Recently Added</a>
+                                                    <a href="{{ route('recently-added') }}" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white rounded-lg">Recently Added</a>
                                                 </li>
                                             </ul>
                                         </div>
@@ -60,7 +63,7 @@
                                         <div x-show="open" x-transition:enter="transition ease-out duration-100" x-transition:enter-start="transform opacity-0 scale-95" x-transition:enter-end="transform opacity-100 scale-100" x-transition:leave="transition ease-in duration-75" x-transition:leave-start="transform opacity-100 scale-100" x-transition:leave-end="transform opacity-0 scale-95" class="absolute right-0 w-full mt-2 origin-top-right rounded-md shadow-lg md:w-48">
                                             <ul class="px-2 py-2 bg-white rounded-md shadow dark-mode:bg-gray-800">
                                                 <li>
-                                                    <a href="{{ route('trending-cryptocurrencies') }}" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white rounded-lg">Top Trending</a>
+                                                    <a href="{{ route('trending-crypto') }}" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white rounded-lg">Top Trending</a>
                                                 </li>
                                             </ul>
                                         </div>
@@ -100,7 +103,7 @@
             </div>
         </main>
 
-        <script></script>
+        @yield('scripts')
 
     </div>
 </body>

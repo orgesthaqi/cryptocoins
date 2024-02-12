@@ -32,6 +32,9 @@
                     <div class="hero-inner">
 						<div class="hero-copy">
 	                        <h1 class="hero-title mt-0">CryptoCoins</h1>
+                            <i class="fa fa-car"></i>
+<i class="fa fa-car" style="font-size:48px;"></i>
+<i class="fa fa-car" style="font-size:60px;color:red;"></i>
                             <p>CryptoCoins is your go-to online destination for all things cryptocurrency. From the latest news and market trends to insightful guides and analysis, we're here to help you navigate the exciting world of digital currencies.</p>
                             @if (Auth::check())
                                 <div class="hero-cta"><a class="button button-primary" href="/home">Dashboard</a></div>

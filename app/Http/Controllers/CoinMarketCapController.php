@@ -13,8 +13,9 @@ class CoinMarketCapController extends Controller
 
         $start = ($request->has('start')) ? $request->start : 1;
         $limit = ($request->has('limit')) ? $request->limit : 100;
+        $time_period = ($request->has('time_period')) ? $request->time_period : '24h';
 
-        $url = "https://pro-api.coinmarketcap.com/v1/cryptocurrency/trending/latest?start={$start}&limit={$limit}";
+        $url = "https://pro-api.coinmarketcap.com/v1/cryptocurrency/trending/latest?start={$start}&limit={$limit}&time_period={$time_period}";
 
         $headers = [
             'Accepts' => 'application/json',
@@ -33,8 +34,9 @@ class CoinMarketCapController extends Controller
 
         $start = ($request->has('start')) ? $request->start : 1;
         $limit = ($request->has('limit')) ? $request->limit : 100;
+        $time_period = ($request->has('time_period')) ? $request->time_period : '24h';
 
-        $url = "https://pro-api.coinmarketcap.com/v1/cryptocurrency/trending/most-visited?start={$start}&limit={$limit}";
+        $url = "https://pro-api.coinmarketcap.com/v1/cryptocurrency/trending/most-visited?start={$start}&limit={$limit}&time_period={$time_period}";
 
         $headers = [
             'Accepts' => 'application/json',

@@ -7,6 +7,30 @@
     <div class="row justify-content-center">
         <div class="col-md-12">
             <div class="flex flex-col mt-8">
+                <div class="text-right mt-2">
+                    <div class="text-sm font-bold text-gray-800">Update frequency: Every 10 minutes.</div>
+                </div>
+                <div @click.away="open = false" x-data="{ open: false }" class="text-right mt-2 mb-3">
+                    <div class="relative inline-block text-left">
+                        <div>
+                          <button @click="open = !open" type="button" class="inline-flex w-full justify-center gap-x-1.5 rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50" id="menu-button" aria-expanded="true" aria-haspopup="true">
+                            Timeframe: {{ request('time_period') ?? '24h' }}
+                            <svg class="-mr-1 h-5 w-5 text-gray-400" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                              <path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z" clip-rule="evenodd" />
+                            </svg>
+                          </button>
+                        </div>
+
+                        <div x-show="open" x-transition:enter="transition ease-out duration-100" x-transition:enter-start="transform opacity-0 scale-95" x-transition:enter-end="transform opacity-100 scale-100" x-transition:leave="transition ease-in duration-75" x-transition:leave-start="transform opacity-100 scale-100" x-transition:leave-end="transform opacity-0 scale-95" class="absolute right-0 z-10 mt-2 w-56 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none" role="menu" aria-orientation="vertical" aria-labelledby="menu-button" tabindex="-1">
+                          <div class="py-1" role="none">
+                            <!-- Active: "bg-gray-100 text-gray-900", Not Active: "text-gray-700" -->
+                            <a href="{{ url()->current() }}?time_period=24h" class="text-gray-700 block px-4 py-2 text-sm @if(request('time_period') == '24h') bg-gray-100 text-gray-900 @else text-gray-700 @endif" role="menuitem" tabindex="-1" id="menu-item-0">24h</a>
+                            <a href="{{ url()->current() }}?time_period=7d" class="text-gray-700 block px-4 py-2 text-sm @if(request('time_period') == '7d') bg-gray-100 @endif" role="menuitem" tabindex="-1" id="menu-item-1">7d</a>
+                            <a href="{{ url()->current() }}?time_period=30d" class="text-gray-700 block px-4 py-2 text-sm @if(request('time_period') == '30d') bg-gray-100 @endif" role="menuitem" tabindex="-1" id="menu-item-2">30d</a>
+                          </div>
+                        </div>
+                    </div>
+                </div>
                 <div class="py-2 -my-2 overflow-x-auto sm:-mx-6 sm:px-6 lg:-mx-8 lg:px-8">
                     <div class="inline-block min-w-full overflow-hidden align-middle border-b border-gray-200 shadow sm:rounded-lg">
                         <table class="min-w-full">
@@ -114,7 +138,7 @@
                         @php
                             $pageStart = (100 * ($i - 1)) + 1;
                         @endphp
-                        <a href="?start={{ $pageStart == 0 ? 1 : $pageStart }}&limit=100&page={{ $i }}" class="px-4 py-2 text-gray-700 bg-gray-200 rounded-md hover:bg-blue-400 hover:text-white {{ (request('page') == $i || !request('page') && $i == 1) ? 'bg-blue-400 text-white' : '' }}">
+                        <a href="?start={{ $pageStart == 0 ? 1 : $pageStart }}&limit=100&page={{ $i }}&time_period={{ request('time_period') ?? '24h' }}" class="px-4 py-2 text-gray-700 bg-gray-200 rounded-md hover:bg-blue-400 hover:text-white {{ (request('page') == $i || !request('page') && $i == 1) ? 'bg-blue-400 text-white' : '' }}">
                             {{ $i }}
                         </a>
                     @endfor
