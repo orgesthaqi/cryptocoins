@@ -7,6 +7,27 @@ use Illuminate\Http\Request;
 
 class CoinMarketCapController extends Controller
 {
+    public function gainers_losers(Request $request)
+    {
+        $client = new Client();
+
+        $start = ($request->has('start')) ? $request->start : 1;
+        $limit = ($request->has('limit')) ? $request->limit : 100;
+        $time_period = ($request->has('time_period')) ? $request->time_period : '24h';
+
+        $url = "https://pro-api.coinmarketcap.com/v1/cryptocurrency/trending/gainers-losers?start={$start}&limit={$limit}&time_period={$time_period}";
+
+        $headers = [
+            'Accepts' => 'application/json',
+            'X-CMC_PRO_API_KEY' => env('COINMARKETCAP_API_KEY')
+        ];
+
+        $response = $client->request('GET', $url, ['headers' => $headers]);
+        $responseBody = json_decode($response->getBody()->getContents());
+
+        return view('coinmarketcap.gainers-losers', ['data' => $responseBody]);
+    }
+
     public function trending_cryptocurrencies(Request $request)
     {
         $client = new Client();

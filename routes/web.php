@@ -23,6 +23,8 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
     Route::prefix('coinmarketcap')->group(function () {
+        Route::get('/gainers-losers', [App\Http\Controllers\CoinMarketCapController::class, 'gainers_losers'])->name('gainers-losers');
+
         Route::get('/trending-cryptocurrencies', [App\Http\Controllers\CoinMarketCapController::class, 'trending_cryptocurrencies'])->name('trending-cryptocurrencies');
 
         Route::get('/most-viewed-pages', [App\Http\Controllers\CoinMarketCapController::class, 'most_viewed_pages'])->name('most-viewed-pages');
